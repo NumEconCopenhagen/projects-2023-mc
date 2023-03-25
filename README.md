@@ -1,8 +1,8 @@
 # \[MC\]
 
 **Group members:**
-- Mie kdfdgjj
-- B
+- Mie Sommer Larsen
+- Clara Westphal Jensen
 
 This repository contains  
 1. Inaugural project. 
