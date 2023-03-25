@@ -1,7 +1,7 @@
 # \[MC\]
 
 **Group members:**
-- A
+- Mie kdfdgjj
 - B
 
 This repository contains  
