@@ -1,9 +1,8 @@
-# \[Group name\]
+# \[MC\]
 
 **Group members:**
 - A
 - B
-- C
 
 This repository contains  
 1. Inaugural project. 
