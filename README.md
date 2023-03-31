@@ -1,7 +1,7 @@
 # \[MC\]
 
 **Group members:**
-- Mie Sommer Larsen dd
+- Mie Sommer Larsen hhhhhf
 - Clara Westphal Jensen
 
 This repository contains  
