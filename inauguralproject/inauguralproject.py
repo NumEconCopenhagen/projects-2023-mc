@@ -60,7 +60,11 @@ class HouseholdSpecializationModelClass:
         elif par.sigma == 1:
             H = HM**(1-par.alpha)*HF**par.alpha
         else:
-            H = ((1-par.alpha)*HM**((par.sigma-1)/par.sigma)+par.alpha*HF**((par.sigma-1)/par.sigma))**(par.sigma/(par.sigma-1)) 
+            HM= np.fmax(HM,1e-07)
+            HF== np.fmax(HF,1e-07)
+            inside =(1-par.alpha)*HM**((par.sigma-1)/par.sigma)+par.alpha*HF**((par.sigma-1)/par.sigma)
+            inside=np.fmax(inside,1e-07)
+            H=(inside)**(par.sigma/(par.sigma-1))
 
 
         # c. total consumption utility
@@ -198,8 +202,8 @@ class HouseholdSpecializationModelClass:
             par.alpha, par.sigma = x
             self.solve_wF_vec()
             self.run_regression()
-            fejl = (par.beta0_target-sol.beta0)**2  + (par.beta1_target-sol.beta1)**2
-            return fejl
+            diff = (par.beta0_target-sol.beta0)**2  + (par.beta1_target-sol.beta1)**2
+            return diff
         
         x0 = [0.5,0.5]
         bounds = [(0.001,1.0),(0.001,1.0)]
