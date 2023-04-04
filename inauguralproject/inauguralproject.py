@@ -158,32 +158,27 @@ class HouseholdSpecializationModelClass:
     def solve_wF_vec(self,discrete=False):
         """ solve model for vector of female wages """
 
-        par = self.par
-        sol = self.sol
-
         wF_vec = np.linspace(0.8, 1.2, 5)
 
         for i, wF in enumerate(wF_vec):
-             par.wF = wF
-             if discrete == True:
+             self.par.wF = wF
+
+             if discrete:
                 opt = self.solve_discrete()
              else:
                 opt = self.solve()
-             sol.HM_vec[i] = opt.HM
-             sol.LM_vec[i] = opt.LM
-             sol.LF_vec[i] = opt.LF
-             sol.HF_vec[i] = opt.HF
-        return sol
+             self.sol.HM_vec[i] = opt.HM
+             self.sol.HF_vec[i] = opt.HF
+             self.sol.LF_vec[i] = opt.LF
+             self.sol.LM_vec[i] = opt.LM
+
         pass
 
 
     def run_regression(self):
         """ run regression """
-
         par = self.par
         sol = self.sol
-
-        
 
         x = np.log(par.wF_vec)
         y = np.log(sol.HF_vec/sol.HM_vec)
@@ -191,25 +186,24 @@ class HouseholdSpecializationModelClass:
         sol.beta0,sol.beta1 = np.linalg.lstsq(A,y,rcond=None)[0] 
 
         
-        
     
-    def estimate(self):
+    def estimate(self, alpha=None, sigma=None):
         """ estimate alpha and sigma """
         par = self.par
         sol = self.sol
         
-        def error(x):
-            par.alpha, par.sigma = x
+        def obj(x):
+            par.alpha = x[0]
+            par.sigma = x[1]
             self.solve_wF_vec()
             self.run_regression()
             diff = (par.beta0_target-sol.beta0)**2  + (par.beta1_target-sol.beta1)**2
             return diff
         
         x0 = [0.5,0.5]
-        bounds = [(0.001,1.0),(0.001,1.0)]
-        solution = optimize.minimize(error, x0, method='Nelder-Mead', bounds=bounds)
-        sol.alpha = solution.x[0]
-        sol.sigma = solution.x[1]
-       
+        res = optimize.minimize(obj, x0, tol = 1e-09, bounds = [(0.01, 0.99), (0.01, 1.0)], method= "nelder-mead")
+        return res.x
         pass
+        
+
         
