@@ -220,8 +220,8 @@ class NewHouseholdSpecializationModelClass:
         par.epsilon = 1.0
         par.omega = 0.5 
 
-        # b.1 new preference for nu
-        par.nu_new = 0.001
+        # b.1 theta
+        par.theta = 0.001
 
         # c. household production
         par.alpha = 0.5
@@ -275,7 +275,7 @@ class NewHouseholdSpecializationModelClass:
         epsilon_ = 1+1/par.epsilon
         TM = LM+HM
         TF = LF+HF
-        disutility = par.nu*(TM**epsilon_/epsilon_+TF**epsilon_/epsilon_)*(par.nu_new*HM)
+        disutility = par.nu*((TM**epsilon_/epsilon_+TF**epsilon_/epsilon_)+(par.theta*LF))
         
     
         return utility - disutility
@@ -388,14 +388,14 @@ class NewHouseholdSpecializationModelClass:
 
         
     
-    def estimate(self, nu_new=None, sigma=None):
-        """ estimate nu_new and sigma """
+    def estimate(self, theta=None, sigma=None):
+        """ estimate theta and sigma """
         par = self.par
         sol = self.sol
         
         def obj(x):
             par.alpha = 0.5
-            par.nu_new = x[0]
+            par.theta = x[0]
             par.sigma = x[1]
             self.solve_wF_vec()
             self.run_regression()
