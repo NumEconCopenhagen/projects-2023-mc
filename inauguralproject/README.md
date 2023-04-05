@@ -11,4 +11,4 @@ In the first two questions we assume the choice set is discrete in half hours. W
 
 In the third question we plot $\log\frac{H_F}{H_M}$ against $\log\frac{w_F}{w_M}$ for different values of $w_F$ again, but this time the choice set is continuous.
 
-In the last two questions we run different regressions. First to find values of elasticity of substitution and productivity in home production for females relative to males that minimizes $(\beta_0+ beta_0^\hat)^2+$(\beta_1+ beta_1^\hat)^2$. Afterwards we try to implement an extension of the model.
+In the last two questions we run different regressions. First to find values of elasticity of substitution and productivity in home production for females relative to males that minimizes $(\beta_0+ beta_0^\hat)^2+(\beta_1+ beta_1^\hat)^2$. Afterwards we try to implement an extension of the model.
