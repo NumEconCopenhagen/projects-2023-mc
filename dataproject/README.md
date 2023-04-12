@@ -1,6 +1,6 @@
 # Data analysis project
 
-Our project is titled **Corona's influence on young women's unemployment** and is about how the number of positive corona cases influence unemployment for young women between the age of 15-24 in 22 the EU countries that are also OECD members. We specifically work with the second quarter of 2021.
+Our project is titled **Corona's influence on young women's unemployment** and is about how the number of positive corona cases influence unemployment for young women between the age of 15-24 in 22 the EU countries that are also OECD members.
 
 The **results** of the project can be seen from running [dataproject.ipynb](dataproject.ipynb).
 
