@@ -6,9 +6,9 @@ The **results** of the project can be seen from running [dataproject.ipynb](data
 
 We apply the **following dataset**:
 
-1. data.xlsx (*source*)
+1. data.xlsx (*https://data.worldbank.org and https://ourworldindata.org*)
 
-Note: The data is from https://data.worldbank.org and https://ourworldindata.org and is a dataset used in a previous project.
+Note: This dataset has been used in a previous project.
 
 **Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires the following installations:
 
