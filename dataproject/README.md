@@ -13,3 +13,5 @@ Note: This dataset has been used in a previous project.
 **Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires the following installations:
 
 ``pip install matplotlib-venn``
+``pip install geopandas ``
+``conda install -c pyviz geoviews ``
